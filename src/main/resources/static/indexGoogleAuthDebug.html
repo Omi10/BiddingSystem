@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Login with Google Account using JavaScript by CodexWorld</title>
+<meta name="google-signin-client_id" content="944192702529-jn082qg79lj4k1tiatbed6tr152e0luo.apps.googleusercontent.com">
+<script src="https://apis.google.com/js/client:platform.js?onload=renderButton" async defer></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+   
+function Google_signIn(googleUser) {
+	 
+	  var profile = googleUser.getBasicProfile();
+	  console.log('ID: ' + profile.getId());
+	  console.log('Name: ' + profile.getName());
+	  console.log('Image URL: ' + profile.getImageUrl());
+	  console.log('Email---: ' + profile.getEmail());	  
+	  update_user_data(profile);
+	}
+	
+
+function update_user_data(response) 
+{
+	 //alert("");
+      $.ajax({
+            type: 'POST',
+            contentType: 'application/json',
+            data: response,
+            dataType : 'json',
+            url: '/userjk',
+            success: function(msg) {
+               console.log("msg");
+            }
+      });
+}
+	
+ /* $.ajax({
+     url: 'https://www.googleapis.com/oauth2/v4/token',
+     type: "post",
+     datatype:"json",
+     contentType: "application/x-www-form-urlencoded; charset=utf-8",
+     async : true,
+     data: {code:code, client_id:clientId, client_secret:clientSecret, redirect_uri:'https://mywebsite.com/quickstart.html', grant_type:'authorization_code'},
+     success: function(response){
+         console.log("Response: " + response);
+         console.log("AT: " + response['access_token']);
+         console.log("RT: " + response['refresh_token']);
+
+         access_token = response['access_token'];
+         refresh_token = response['refresh_token'];
+     }
+ })
+ .fail(function(err) {
+     alert("error" + err); //[Object object]
+     console.log("error" + err);
+ }); */
+  
+</script>
+</head>
+<body>
+<div class="g-signin2" data-longtitle="true" data-onsuccess="Google_signIn" data-theme="light" data-width="200"></div>
+</body>
+</html>

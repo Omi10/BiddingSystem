@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Life Line</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- for google log in start-->
+    <meta name="google-signin-client_id" content="944192702529-jn082qg79lj4k1tiatbed6tr152e0luo.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/client:platform.js?onload=renderButton" async defer></script>
+  <!-- for google log in end-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+  
+  .jumbotron {
+      background-color: #f4511e;
+      color: #fff;
+      padding: 100px 25px;
+  }
+  .bg-grey {
+      background-color: #f6f6f6;
+  }
+  .container-fluid {
+      padding: 60px 50px;
+  }
+  </style>
+
+<!-- for google log in start-->
+<script>
+
+$.get( "/home" ,function(data){
+  window.location.replace("/itemsearch.html");
+});
+
+
+
+</script>
+   <!-- for google log in end--> 
+</head>
+<body>
+
+<div class="jumbotron text-center">
+  <h1>Life Line</h1>
+  <p>Save Life by Donating</p>
+</div>
+
+<div class="container text-center">
+      <a class="btn btn-large btn-info loginBtn loginBtn--google"
+        href="/login">Login with Google</a>
+    </div>
+
+<!-- Container (About Section) -->
+<div class="container-fluid">
+  <h2>About Company</h2>
+  <h4>Life Line</h4>
+  <p>Hello World Java Project</p>
+  <button class="btn btn-default btn-lg">Get in Touch</button>
+</div>
+</body>
+</html>
+

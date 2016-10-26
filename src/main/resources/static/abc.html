@@ -1,0 +1,42 @@
+<script>
+$(document).ready(function() {
+     $.get("/user/1/bids", function(data, status) 
+     {
+		$.each(data, function(i, item)
+		{					
+			tr = $('<tr/>');
+			tr.append("<td>" + (i + 1) + "</td>");
+			tr.append("<td>" + data[i].item + "</td>");
+			tr.append("<td>" + data[i].description + "</td>");
+			tr.append("<td>" + data[i].startBidValue + "</td>");
+			tr.append("<td>" + data[i].bidEndTime + "</td>"); 
+			tr.append("<td>" + data[i].bidValue + "</td>");
+			tr.append("<td> <input id="+ "newBid_"+data[i].bidId+ " type=\"text\">td>);																
+			tr.append($('<button/>', 
+			{
+				text: 'Update Bid', 
+			    id: "updateBid_"+ data[i].bidId,
+			    value : data[i].bidId
+			    click: function() 
+			    {   
+				    $.ajax(
+				    {
+						url : '/bids/'+data[i].bidId,
+						type : 'PATCH',
+						contentType : 'application/json',
+						data : JSON.stringify({
+						"bidId": data[i].bidId,
+						 "bidValue": $("#newBid_"+$(this).val()).val()  //this denotes current buttonand taking its default value
+						 }),
+						 dataType : 'json'
+		            });
+					$("#newBid_"+$(this).val()).prop("disabled", true);
+					$(this).prop("disabled", true);
+					                 
+			    }
+			}));             
+			$('#itemsTable').append(tr);
+	    });      
+	});
+});			             
+</script>
