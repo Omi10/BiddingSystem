@@ -38,6 +38,7 @@ public class ItemController {
 		LOG.info("Get all Item requests");
 		System.out.println( ((User)session.getAttribute("user")).getName());
 		System.out.println( ((User)session.getAttribute("user")).getName());
+		System.out.println( ((User)session.getAttribute("user")).getName());
 		List<ItemModel> itemModels = null;
 		itemModels = itemService.getItems(parameters);
 		return itemModels;
