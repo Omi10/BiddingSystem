@@ -14,13 +14,15 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import inti.ws.spring.exception.client.ForbiddenException;
 
 @Configuration
 @EnableTransactionManagement
-public class DatabaseConfig {
+public class DatabaseConfig extends WebMvcConfigurerAdapter {
 
 	@Value("${jdbc.driverClassName}")
 	private String DB_DRIVER;
@@ -68,7 +70,6 @@ public class DatabaseConfig {
 		hibernateProperties.put("hibernate.show_sql", HIBERNATE_SHOW_SQL);
 		hibernateProperties.put("hibernate.hbm2ddl.auto", HIBERNATE_HBM2DDL_AUTO);
 		sessionFactoryBean.setHibernateProperties(hibernateProperties);
-
 		return sessionFactoryBean;
 	}
 
@@ -79,15 +80,20 @@ public class DatabaseConfig {
 		return transactionManager;
 	}
 	
-	
-	class TransactionInterceptor extends HandlerInterceptorAdapter {
-		@Override
-		public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
-				throws Exception {
-			StandardSessionFacade session = (StandardSessionFacade) request.getSession();
-			if(!request.getRequestURI().equals("/home")&&session.getAttribute("user")==null)
-				throw new ForbiddenException("User is not logged-in");
-			return true;
-		}
+	@Override 
+	public void addInterceptors(InterceptorRegistry registry) {
+	    registry.addInterceptor(new TransactionInterceptor());
+     }
+	 
+}
+
+class TransactionInterceptor extends HandlerInterceptorAdapter {
+	@Override
+	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
+			throws Exception {
+		StandardSessionFacade session = (StandardSessionFacade) request.getSession();
+		if (!request.getRequestURI().equals("/home") && session.getAttribute("user") == null)
+			throw new ForbiddenException("User is not logged-in");
+		return true;
 	}
 }

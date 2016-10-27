@@ -33,23 +33,21 @@ public class ItemController {
 	@RequestMapping(value = "/items", method = RequestMethod.GET)
 	@ResponseBody
 	@ResponseStatus(HttpStatus.OK)
-	public List<ItemModel> getAllItems(HttpServletRequest request, HttpSession session) throws Exception {
+	public List<ItemModel> getAllItems(HttpServletRequest request) throws Exception {
 		Map<String, String[]> parameters = request.getParameterMap();
 		LOG.info("Get all Item requests");
-		System.out.println( ((User)session.getAttribute("user")).getName());
-		System.out.println( ((User)session.getAttribute("user")).getName());
-		System.out.println( ((User)session.getAttribute("user")).getName());
 		List<ItemModel> itemModels = null;
 		itemModels = itemService.getItems(parameters);
 		return itemModels;
 	}
-	
 
 	@RequestMapping(value = "/items", method = RequestMethod.POST)
 	@ResponseBody
 	@ResponseStatus(HttpStatus.CREATED)
-	public ItemModel uploadItem(@RequestBody ItemModel itemModel) throws BadRequestException {
-		return itemService.addItem(itemModel);
+	public ItemModel uploadItem(@RequestBody ItemModel itemModel, HttpSession session) throws BadRequestException {
+		User user=(User) session.getAttribute("user");
+		int userId=user.getId();
+		return itemService.addItem(itemModel,userId);
 
 	}
 
@@ -73,12 +71,13 @@ public class ItemController {
 	public ItemModel getItem(@PathVariable int itemId) throws BadRequestException {
 		return itemService.getItem(itemId);
 	}
-	
-	
+
 	@RequestMapping(value = "/user/{userId}/items", method = RequestMethod.GET)
 	@ResponseBody
 	@ResponseStatus(HttpStatus.OK)
-	public List<ItemModel> getUserItems(@PathVariable int userId) throws BadRequestException {
+	public List<ItemModel> getUserItems(@PathVariable int userId,HttpSession session) throws BadRequestException {
+		User user=(User) session.getAttribute("user");
+		userId=user.getId();
 		return itemService.getUserItems(userId);
 	}
 

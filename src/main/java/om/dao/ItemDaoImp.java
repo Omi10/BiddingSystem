@@ -16,7 +16,6 @@ import org.springframework.stereotype.Repository;
 
 import om.entities.Item;
 
-
 @Repository
 @Transactional
 public class ItemDaoImp implements ItemDao {
@@ -43,7 +42,9 @@ public class ItemDaoImp implements ItemDao {
 	public List<Item> getItems() throws JDBCConnectionException {
 		return getSession().createQuery("from Item").list();
 
-	}@SuppressWarnings("unchecked")
+	}
+
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Item> getUserItems(int userId) throws JDBCConnectionException {
 		Query query = getSession().createQuery("from Item where user.id=:userId");
@@ -52,7 +53,7 @@ public class ItemDaoImp implements ItemDao {
 		return result;
 
 	}
-	
+
 	@Override
 	public List<Item> getItemsByCategory(int categoryId) {
 		DetachedCriteria criteria = DetachedCriteria.forClass(Item.class);

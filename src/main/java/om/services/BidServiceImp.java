@@ -47,18 +47,18 @@ public class BidServiceImp implements BidService {
 	public MakeBidModel addBid(int itemId, MakeBidModel makeBidModel) {
 		Bid bid = mUtility.makeBidModelToBid(itemId, makeBidModel);
 		bidDao.save(bid);
-		//return mUtility.bidToBidModel(bid);
+		// return mUtility.bidToBidModel(bid);
 		return makeBidModel;
 	}
 
 	@Override
 	public BidModel updateBid(int bidId, BidModel bidModel) {
-		  Bid bid=bidDao.getBid(bidId); 
-		  bid.setBidAmount(bidModel.getBidValue());
-		  System.out.println("PATCH done");
-		  bidDao.update(bid); 
-		  return bidModel;
-		 
+		Bid bid = bidDao.getBid(bidId);
+		bid.setBidAmount(bidModel.getBidValue());
+		System.out.println("PATCH done");
+		bidDao.update(bid);
+		return bidModel;
+
 	}
 
 	@Override

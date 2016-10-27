@@ -1,7 +1,7 @@
 package om.models;
 
 public class BidModel {
-	
+
 	private int bidId;
 	private String madeBy;
 	private String item;

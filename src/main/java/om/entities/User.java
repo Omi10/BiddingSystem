@@ -35,7 +35,7 @@ public class User implements java.io.Serializable {
 		this.email = email;
 		this.contactNo = contactNo;
 	}
-	
+
 	public User(String name, String email) {
 		this.name = name;
 		this.email = email;

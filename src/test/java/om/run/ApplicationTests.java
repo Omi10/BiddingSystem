@@ -25,7 +25,7 @@ public class ApplicationTests {
 	@Test
 	public void contextLoads() {
 	}
-	
+
 	@Test
 	@Transactional
 	@Rollback(true)
@@ -38,16 +38,16 @@ public class ApplicationTests {
 		itemModelToSave.setCategory(null);
 		System.out.println("Testing");
 		// Save and Get Test
-		//ItemModel itemModelSaved = itemService.addItem(itemModelToSave);
-		//assertTrue(itemModelSaved.getItemId() > 0);
+		// ItemModel itemModelSaved = itemService.addItem(itemModelToSave);
+		// assertTrue(itemModelSaved.getItemId() > 0);
 		assertTrue(1 > 0);
 	}
-	
+
 	@Test
 	@Transactional
 	@Rollback(true)
 	public void deleteItemTest() throws BadRequestException {
-		
+
 		assertTrue(1 > 0);
 	}
 

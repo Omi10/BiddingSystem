@@ -12,12 +12,12 @@ public interface ItemService {
 
 	public ItemModel getItem(int itemId) throws BadRequestException;
 
-	public ItemModel addItem(ItemModel item);
+	public ItemModel addItem(ItemModel item,int userId);
 
 	public ItemModel updateItem(int itemId, ItemModel ittem);
 
 	public void deleteItem(int itemId);
-	
+
 	public List<ItemModel> getUserItems(int userId) throws BadRequestException;
-	
+
 }

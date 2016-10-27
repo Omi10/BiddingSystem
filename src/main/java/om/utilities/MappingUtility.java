@@ -57,7 +57,6 @@ public class MappingUtility {
 		} catch (ParseException pe) {
 
 		}
-
 		return item;
 	}
 
@@ -65,7 +64,7 @@ public class MappingUtility {
 		item.setInitialPrice(itemModel.getStartBidAmount());
 		return itemModel;
 	}
-	
+
 	public BidModel bidToBidModel(Bid bid) {
 		BidModel bidModel = new BidModel();
 		bidModel.setBidId(bid.getId());
@@ -78,12 +77,12 @@ public class MappingUtility {
 		bidModel.setBidValue(bid.getBidAmount());
 		bidModel.setStartBidValue(bid.getItem().getInitialPrice());
 		bidModel.setDescription(bid.getItem().getDescription());
-		
+
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		
+
 		Date bidTime = bid.getItem().getEndTime();
 		bidModel.setBidEndTime(sdf.format(bidTime));
-		
+
 		Date dt = new Date();
 		String currentTime = sdf.format(dt);
 		bidModel.setBidTime(currentTime);

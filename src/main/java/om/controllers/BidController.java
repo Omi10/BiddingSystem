@@ -2,6 +2,8 @@ package om.controllers;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import om.entities.User;
 import om.models.BidModel;
 import om.models.MakeBidModel;
 import om.models.ResultModel;
@@ -36,8 +39,10 @@ public class BidController {
 	@RequestMapping(value = "user/{userId}/bids", method = RequestMethod.GET)
 	@ResponseBody
 	@ResponseStatus(HttpStatus.OK)
-	public List<BidModel> getUserBids(@PathVariable int userId) {
+	public List<BidModel> getUserBids(@PathVariable int userId ,HttpSession session) {
 		List<BidModel> bidModels = null;
+		User user=(User) session.getAttribute("user");
+		userId=user.getId();
 		bidModels = bidService.getUserBids(userId);
 		return bidModels;
 	}
@@ -45,7 +50,10 @@ public class BidController {
 	@RequestMapping(value = "items/{itemId}/bids", method = RequestMethod.POST)
 	@ResponseBody
 	@ResponseStatus(HttpStatus.CREATED)
-	public MakeBidModel makeBid(@PathVariable int itemId, @RequestBody MakeBidModel makeBidModel) {
+	public MakeBidModel makeBid(@PathVariable int itemId, @RequestBody MakeBidModel makeBidModel,HttpSession session) {
+		User user=(User) session.getAttribute("user");
+		int userId=user.getId();
+		makeBidModel.setBidderId(userId);
 		return bidService.addBid(itemId, makeBidModel);
 	}
 
@@ -53,7 +61,7 @@ public class BidController {
 	@ResponseBody
 	@ResponseStatus(HttpStatus.CREATED)
 	public ResultModel bidResult(@PathVariable int itemId) {
-		ResultModel resultModel=bidService.getBidResult(itemId);
+		ResultModel resultModel = bidService.getBidResult(itemId);
 		return resultModel;
 	}
 

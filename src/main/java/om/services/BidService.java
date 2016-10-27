@@ -21,5 +21,5 @@ public interface BidService {
 	public ResultModel getBidResult(int itemId);
 
 	public List<BidModel> getUserBids(int userId);
-	
+
 }

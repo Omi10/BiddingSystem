@@ -29,7 +29,10 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>
  $(document).ready(function() {
-$("#uploadForm").submit(function() {
+	 
+  $("#bidEndTime").val("2016-10-26T23:00"); 
+	
+   $("#uploadForm").submit(function() {
 	 $.ajax({
 	       url : '/items',
 	       type : 'POST',
@@ -72,16 +75,17 @@ $("#uploadForm").submit(function() {
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="home.html">Home</a></li>
+       <!--  <li class="active"><a href="home.html">Home</a></li> -->
         <li><a href="itemsearch.html">Item Search</a></li>
         <li><a href="itemupload.html">Item Upload</a></li>
         <li><a href="bids.html">My Bids</a></li>
         <li><a href="uploadeditems.html">Uploaded Items</a></li>
-        <li><a href="about.html">About</a></li>
+        <!-- <li><a href="about.html">About</a></li> -->
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Your Account</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+        <li><a href="/logout"><span class="glyphicon glyphicon glyphicon-log-out">
+		     </span> Log-out </a>
+		</li>
       </ul>
     </div>
   </div>
@@ -96,7 +100,7 @@ Item description  <input type="text" name="description" />
 Inital bid price <input type="text" name="startBidAmount" />
 <br>
 Bid End Date:
-<input input type="datetime-local" name="bidEndTime" ><br>
+<input input type="datetime-local" id="bidEndTime"  defaultValue="2016-10-10 T00:00:00"><br>
 <input type="submit" name="last_name" id="uploadButton"/>
 </form>
 

@@ -29,45 +29,47 @@ public class MainController extends WebSecurityConfigurerAdapter {
 
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	@ResponseBody
-	public String login(HttpSession session ,Principal principal) throws ForbiddenException, UnauthorizedException {
+	public String login(HttpSession session, Principal principal) throws ForbiddenException, UnauthorizedException {
 		if (principal == null)
 			throw new ForbiddenException("User google authenticaion is missing : Access Denied");
 		OAuth2Authentication auth = (OAuth2Authentication) principal;
-		//System.out.println(principal);
-		  
+		// System.out.println(principal);
+
 		if (auth.isAuthenticated()) {
 			@SuppressWarnings("unchecked")
 			LinkedHashMap<String, String> details = (LinkedHashMap<String, String>) auth.getUserAuthentication()
 					.getDetails();
-		
-			/*String domain = details.get("hd");	
-			if (!"practo.com".equalsIgnoreCase(domain))
-			 throw new UnauthorizedException("Domain name other than 'practo.com' are not allowed");*/
-			
+
+			/*
+			 * String domain = details.get("hd"); if
+			 * (!"practo.com".equalsIgnoreCase(domain)) throw new
+			 * UnauthorizedException("Domain name other than 'practo.com' are not allowed"
+			 * );
+			 */
+
 			String email = details.get("email");
 			String name = details.get("name");
-			
-			System.out.println(email+" "+name);
+
+			System.out.println(email + " " + name);
 			User user = userService.getUserByEmail(email);
-			
-			if(user==null){
-				user = userService.addUser(name,email);
+
+			if (user == null) {
+				user = userService.addUser(name, email);
 			}
-			session.setAttribute("user",user);
+			session.setAttribute("user", user);
 			return name;
 		} else {
 			throw new UnauthorizedException("Login failed. Please try again");
 		}
-		
+
 	}
 
-	
 	@RequestMapping(value = "/logout")
 	public String logOut(HttpSession session) {
 		session.invalidate();
 		return "redirect:/index.html";
 	}
-		
+
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.antMatcher("/**").authorizeRequests().antMatchers("/**", "/login**", "/webjars/**", "/js/**").permitAll()

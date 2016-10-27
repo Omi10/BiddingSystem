@@ -54,14 +54,23 @@
 		
 		<!-- dependecies added for Jsp support -->
 		
-		<dependency>
+	<!-- 	<dependency>
 			<groupId>org.apache.tomcat.embed</groupId>
 			<artifactId>tomcat-embed-jasper</artifactId>
-		</dependency>
+		</dependency> -->
+		
+		
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
 		</dependency>
+		
+		<!--   Dependency for war suport on ec2 -->
+		<dependency>
+	        <groupId>org.springframework.boot</groupId>
+	        <artifactId>spring-boot-starter-tomcat</artifactId>
+	        <scope>provided</scope>
+       </dependency>
 		
 	<!-- 	
 		https://mvnrepository.com/artifact/org.webjars/angular-ui-router

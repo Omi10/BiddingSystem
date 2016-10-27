@@ -14,7 +14,6 @@ import om.entities.Item;
 import om.models.ItemModel;
 import om.utilities.MappingUtility;
 
-
 @Service
 public class ItemServiceImp implements ItemService {
 
@@ -26,7 +25,7 @@ public class ItemServiceImp implements ItemService {
 
 	@Autowired
 	CategoryDao categoryDao;
-	
+
 	@Autowired
 	UserDao userDao;
 
@@ -52,23 +51,22 @@ public class ItemServiceImp implements ItemService {
 		ItemModel itemModel = mUtility.itemToItemModel(item);
 		return itemModel;
 	}
-	
-	
+
 	@Override
 	public List<ItemModel> getUserItems(int userId) throws BadRequestException {
 		if (userId < 0)
 			throw new BadRequestException("Invalid User");
-		
+
 		List<Item> items = itemDao.getUserItems(userId);
 		List<ItemModel> itemModels = mUtility.itemsToItemModels(items);
 		return itemModels;
 	}
 
 	@Override
-	public ItemModel addItem(ItemModel itemModel) {
-		
+	public ItemModel addItem(ItemModel itemModel, int userId) {
+
 		Item item = mUtility.itemModelToItem(itemModel);
-		item.setUser(userDao.getUser(1));
+		item.setUser(userDao.getUser(userId));
 		itemDao.save(item);
 		return itemModel;
 	}
