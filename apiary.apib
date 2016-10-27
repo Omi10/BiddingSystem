@@ -1,0 +1,66 @@
+HOST: http://localhost:8080/
+
+#Bidding System API
+
+Online Bidding System is an portal where users can bid for avaialable 
+items as well as upload an item for bidding.
+
+
+
+## Items Listing [/items]
+
+### List All Items [GET]
+
+## Upload an item [/item ] 
+
+### Item upload[POST]
+
+
+## Item Manipulation [/item/{itemId}]            
+
+### Get an Item [GET]
+
+
+### Update an Item [PATCH]
+
++ Parameters
+    + itemId - id of an item.
+
++ Request (application/json)
+
+        {          
+            "bid_price" : 2500
+        }
+    + Headers
+
+    + Body
+    
+       {    
+            "bid_price" : 3000
+       }
+        
++ Response 200 (application/json)
+
+### Deleting Item [DELETE]
+
++ Parameters
+    + itemId - id of an upload item
+    
++ Response 200 (application/json)  
+
+
+## Bid for an item [/bid]
+
+### Bid for an available item [POST]    
+
+## Bid Manipulation [/bid/{bidId}]
+
+### Get Bid Detials [GET]
+
+### Update Bid [PATCH]
+
+### Delete Bid [DELETE]
+
+## Item Bids [/item/{itemId}/bids]
+
+### All Bids for an item [GET]
