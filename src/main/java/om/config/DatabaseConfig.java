@@ -24,16 +24,16 @@ import inti.ws.spring.exception.client.ForbiddenException;
 @EnableTransactionManagement
 public class DatabaseConfig extends WebMvcConfigurerAdapter {
 
-	@Value("${jdbc.driverClassName}")
+	@Value("${db.driver}")
 	private String DB_DRIVER;
 
-	@Value("${jdbc.password}")
+	@Value("${db.password}")
 	private String DB_PASSWORD;
 
-	@Value("${jdbc.url}")
+	@Value("${db.url}")
 	private String DB_URL;
 
-	@Value("${jdbc.username}")
+	@Value("${db.username}")
 	private String DB_USERNAME;
 
 	@Value("${hibernate.dialect}")
@@ -79,12 +79,12 @@ public class DatabaseConfig extends WebMvcConfigurerAdapter {
 		transactionManager.setSessionFactory(sessionFactory().getObject());
 		return transactionManager;
 	}
-	
-	@Override 
+
+	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
-	    registry.addInterceptor(new TransactionInterceptor());
-     }
-	 
+		registry.addInterceptor(new TransactionInterceptor());
+	}
+
 }
 
 class TransactionInterceptor extends HandlerInterceptorAdapter {

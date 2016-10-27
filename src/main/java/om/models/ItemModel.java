@@ -11,7 +11,6 @@ public class ItemModel {
 	private String bidType;
 	private String bidEndTime;
 	private Integer ItemId;
-	
 
 	public String getBidType() {
 		return bidType;

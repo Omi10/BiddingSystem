@@ -65,8 +65,9 @@ $(document).ready(function() {
 					       }),
 					dataType : 'json'
 		            });
-				    $("#bidValueTextBox"+$(this).val()).prop("disabled", true);
-	                $(this).prop("disabled", true);
+				    //$("#bidValueTextBox"+$(this).val()).prop("disabled", true);
+				    $("#bidValueTextBox"+$(this).val()).val('');
+	                //$(this).prop("disabled", true);
 					                 
 			    }
 			}));             

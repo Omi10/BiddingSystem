@@ -26,6 +26,15 @@ public class MainController extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	UserServiceImp userService;
+	
+	/**
+	 * 
+	 * @param session
+	 * @param principal
+	 * @return
+	 * @throws ForbiddenException
+	 * @throws UnauthorizedException
+	 */
 
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	@ResponseBody
@@ -33,24 +42,14 @@ public class MainController extends WebSecurityConfigurerAdapter {
 		if (principal == null)
 			throw new ForbiddenException("User google authenticaion is missing : Access Denied");
 		OAuth2Authentication auth = (OAuth2Authentication) principal;
-		// System.out.println(principal);
 
 		if (auth.isAuthenticated()) {
 			@SuppressWarnings("unchecked")
 			LinkedHashMap<String, String> details = (LinkedHashMap<String, String>) auth.getUserAuthentication()
 					.getDetails();
 
-			/*
-			 * String domain = details.get("hd"); if
-			 * (!"practo.com".equalsIgnoreCase(domain)) throw new
-			 * UnauthorizedException("Domain name other than 'practo.com' are not allowed"
-			 * );
-			 */
-
 			String email = details.get("email");
 			String name = details.get("name");
-
-			System.out.println(email + " " + name);
 			User user = userService.getUserByEmail(email);
 
 			if (user == null) {

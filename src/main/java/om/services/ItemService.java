@@ -8,11 +8,13 @@ import om.models.ItemModel;
 
 public interface ItemService {
 
-	public List<ItemModel> getItems(Map<String, String[]> parameters);
+	public List<ItemModel> getItemsByCategory(Map<String, String[]> parameters);
+
+	public List<ItemModel> getAllItems();
 
 	public ItemModel getItem(int itemId) throws BadRequestException;
 
-	public ItemModel addItem(ItemModel item,int userId);
+	public ItemModel addItem(ItemModel item, int userId) throws BadRequestException;
 
 	public ItemModel updateItem(int itemId, ItemModel ittem);
 

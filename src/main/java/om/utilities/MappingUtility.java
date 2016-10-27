@@ -29,8 +29,9 @@ public class MappingUtility {
 			itemModel.setBidType("Open");
 		if (item.getUser() != null)
 			itemModel.setOwner(item.getUser().getName());
+		if (item.getDescription() != null)
+			itemModel.setDescription(item.getDescription());
 
-		itemModel.setDescription(item.getDescription());
 		itemModel.setStartBidAmount(item.getInitialPrice());
 		Date bidTime = item.getEndTime();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");

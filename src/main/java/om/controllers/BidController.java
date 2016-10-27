@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import inti.ws.spring.exception.client.BadRequestException;
 import om.entities.User;
 import om.models.BidModel;
 import om.models.MakeBidModel;
@@ -30,7 +31,7 @@ public class BidController {
 	@ResponseBody
 	@ResponseStatus(HttpStatus.OK)
 
-	public List<BidModel> getAllBids(@PathVariable int itemId) {
+	public List<BidModel> getAllBids(@PathVariable int itemId) throws BadRequestException {
 		List<BidModel> bidModels = null;
 		bidModels = bidService.getBids(itemId);
 		return bidModels;
@@ -39,10 +40,10 @@ public class BidController {
 	@RequestMapping(value = "user/{userId}/bids", method = RequestMethod.GET)
 	@ResponseBody
 	@ResponseStatus(HttpStatus.OK)
-	public List<BidModel> getUserBids(@PathVariable int userId ,HttpSession session) {
+	public List<BidModel> getUserBids(@PathVariable int userId, HttpSession session) throws BadRequestException {
 		List<BidModel> bidModels = null;
-		User user=(User) session.getAttribute("user");
-		userId=user.getId();
+		User user = (User) session.getAttribute("user");
+		userId = user.getId();
 		bidModels = bidService.getUserBids(userId);
 		return bidModels;
 	}
@@ -50,9 +51,10 @@ public class BidController {
 	@RequestMapping(value = "items/{itemId}/bids", method = RequestMethod.POST)
 	@ResponseBody
 	@ResponseStatus(HttpStatus.CREATED)
-	public MakeBidModel makeBid(@PathVariable int itemId, @RequestBody MakeBidModel makeBidModel,HttpSession session) {
-		User user=(User) session.getAttribute("user");
-		int userId=user.getId();
+	public MakeBidModel makeBid(@PathVariable int itemId, @RequestBody MakeBidModel makeBidModel, HttpSession session)
+			throws BadRequestException {
+		User user = (User) session.getAttribute("user");
+		int userId = user.getId();
 		makeBidModel.setBidderId(userId);
 		return bidService.addBid(itemId, makeBidModel);
 	}
@@ -60,7 +62,7 @@ public class BidController {
 	@RequestMapping(value = "items/{itemId}/bids/result", method = RequestMethod.GET)
 	@ResponseBody
 	@ResponseStatus(HttpStatus.CREATED)
-	public ResultModel bidResult(@PathVariable int itemId) {
+	public ResultModel bidResult(@PathVariable int itemId) throws BadRequestException {
 		ResultModel resultModel = bidService.getBidResult(itemId);
 		return resultModel;
 	}
@@ -75,7 +77,7 @@ public class BidController {
 	@RequestMapping(value = "/bids/{bidId}", method = RequestMethod.PATCH)
 	@ResponseBody
 	@ResponseStatus(HttpStatus.OK)
-	public BidModel updateBid(@PathVariable int bidId, @RequestBody BidModel bidModel) {
+	public BidModel updateBid(@PathVariable int bidId, @RequestBody BidModel bidModel) throws BadRequestException {
 		return bidService.updateBid(bidId, bidModel);
 	}
 

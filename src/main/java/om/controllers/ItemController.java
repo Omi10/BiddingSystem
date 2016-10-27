@@ -20,7 +20,6 @@ import inti.ws.spring.exception.client.BadRequestException;
 import om.entities.User;
 import om.models.ItemModel;
 import om.services.ItemService;
-import om.utilities.Logger;
 
 @RestController
 public class ItemController {
@@ -28,16 +27,13 @@ public class ItemController {
 	@Autowired
 	ItemService itemService;
 
-	private static final Logger LOG = Logger.getInstance(ItemController.class);
-
 	@RequestMapping(value = "/items", method = RequestMethod.GET)
 	@ResponseBody
 	@ResponseStatus(HttpStatus.OK)
 	public List<ItemModel> getAllItems(HttpServletRequest request) throws Exception {
 		Map<String, String[]> parameters = request.getParameterMap();
-		LOG.info("Get all Item requests");
 		List<ItemModel> itemModels = null;
-		itemModels = itemService.getItems(parameters);
+		itemModels = itemService.getAllItems();
 		return itemModels;
 	}
 
@@ -45,9 +41,9 @@ public class ItemController {
 	@ResponseBody
 	@ResponseStatus(HttpStatus.CREATED)
 	public ItemModel uploadItem(@RequestBody ItemModel itemModel, HttpSession session) throws BadRequestException {
-		User user=(User) session.getAttribute("user");
-		int userId=user.getId();
-		return itemService.addItem(itemModel,userId);
+		User user = (User) session.getAttribute("user");
+		int userId = user.getId();
+		return itemService.addItem(itemModel, userId);
 
 	}
 
@@ -75,9 +71,9 @@ public class ItemController {
 	@RequestMapping(value = "/user/{userId}/items", method = RequestMethod.GET)
 	@ResponseBody
 	@ResponseStatus(HttpStatus.OK)
-	public List<ItemModel> getUserItems(@PathVariable int userId,HttpSession session) throws BadRequestException {
-		User user=(User) session.getAttribute("user");
-		userId=user.getId();
+	public List<ItemModel> getUserItems(@PathVariable int userId, HttpSession session) throws BadRequestException {
+		User user = (User) session.getAttribute("user");
+		userId = user.getId();
 		return itemService.getUserItems(userId);
 	}
 
