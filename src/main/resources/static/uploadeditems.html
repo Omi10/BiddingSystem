@@ -63,7 +63,6 @@ $(document).ready(function() {
 			    {   
 			    	$.get('items/'+data[i].itemId+'/bids/result',function(resp,status)
 			    	{
-			    		 alert("Winner Name= "+ resp.winner + "   Final Bid Value ="+resp.finalBidAmount);
 			    		 //alert($(this).val());
 			    		 $("#resultOut"+data[i].itemId).val(resp.isResultOut);
 			    		 $("#bidAmount"+data[i].itemId).val(resp.finalBidAmount);
@@ -75,7 +74,7 @@ $(document).ready(function() {
 			    	$("#bidWinner"+data[i].itemId).prop("disabled", true);
 			    }
 			})); 
-			tr.append("<td> <input id="+"resultOut"+data[i].itemId+ " type=\"text\"> </td>");
+			/* tr.append("<td> <input id="+"resultOut"+data[i].itemId+ " type=\"text\"> </td>"); */
 			tr.append("<td> <input id="+"bidAmount"+data[i].itemId+ " type=\"text\"> </td>");
 			tr.append("<td> <input id="+"bidWinner"+data[i].itemId+ " type=\"text\"> </td>");
 			
@@ -89,11 +88,11 @@ $(document).ready(function() {
 </head>
 <body>
 
-    <div id="dialog1" title="Dialog Title" hidden="hidden">I'm a dialog</div>
+   <!--  <div id="dialog1" title="Dialog Title" hidden="hidden">I'm a dialog</div>
    
    <div id="dialog" title="Basic dialog">
   <p>This is an animated dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the 'x' icon.</p>
-    </div> 
+    </div>  -->
  
 	<div class="jumbotron">
 		<div class="container text-center">
@@ -147,7 +146,7 @@ $(document).ready(function() {
 						<th>Description</th>
 						<th>Intial Bid Amount</th>
 						<th>Bid End Time</th>
-						<th>Get Results</th>
+						<!-- <th>Get Results</th> -->
 						<th>Results Out/Not</th>
 						<th>Final Bid Amount</th>
 						<th>Winner Name</th>

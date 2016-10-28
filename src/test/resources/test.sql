@@ -1,9 +1,18 @@
+
+
+
 INSERT INTO `user` (`id`, `name`, `email`, `contact_no`)
 VALUES
 	(1,'om','nirankariom@gmail.com','9826471322'),
 	(2,'rahul','rahulpat@gmail.com','9826473281'),
 	(3,'prerna','prerna@gmail.com','9875647210'),
 	(4,'ritesh','rit@gmail.com','9875647211');
+	
+INSERT INTO `category` (`id`, `category`)
+VALUES
+	(1,'Electronics'),
+	(2,'Vechiles'),
+	(3,'Furniture');
 
 INSERT INTO `item` (`id`, `item`, `description`, `image_url`, `initial_price`, `start_time`, `end_time`, `category_id`, `owner_id`, `bid_type`, `min_balance`)
 VALUES

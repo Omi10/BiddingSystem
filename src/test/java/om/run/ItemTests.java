@@ -47,11 +47,11 @@ public class ItemTests {
 		Assert.assertEquals(newSize, oldSize + 1);
 	}
 
-	@Test
+	/*@Test
 	public void getItemTest() throws BadRequestException {
 		ItemModel itemModel = itemService.getItem(1);
 		Assert.assertTrue(itemModel.getItemId() != null);
-	}
+	}*/
 
 	// Constraint of Cascade delete (i.e. the item will not get deleted if there
 	// are corresponding bids to it
