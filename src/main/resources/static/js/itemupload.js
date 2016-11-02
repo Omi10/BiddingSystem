@@ -28,14 +28,10 @@ $(document).ready(function() {
 		       "categoryId" : document.getElementById("uploadForm").elements.namedItem("categorySelector").value
 		       }),
 	       dataType : 'json',
-	       success: function(data)
+	       success: function(response)
 	       {
-	    	   bootbox.alert({
-		    	    message: " Item uploaded successfully",
-		    	    size: 'small'
-		    	});
+	    	  
 	       }
-	       
-	       });
+	     });
      });
 });

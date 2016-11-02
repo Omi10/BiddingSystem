@@ -56,7 +56,6 @@ public class ItemController {
 		User user = (User) session.getAttribute("user");
 		int userId = user.getId();
 		return itemService.addItem(itemModel, userId);
-
 	}
 
 	@RequestMapping(value = "/item/{itemId}", method = RequestMethod.PATCH)
