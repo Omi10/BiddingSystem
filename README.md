@@ -19,6 +19,9 @@ This project for Online Bidding System where users can upload their items for bi
 [Amazon EC2 Hosting](http://ec2-54-245-35-16.us-west-2.compute.amazonaws.com:8080/bidsystem/)
 
 
+[Requirement Doc](https://docs.google.com/document/d/1zbbmGKQ3GOYGNZ9AJlDZWMlvCoUCbNKhgTPp8_waSvg/edit?usp=sharing)
+
+
 
 
 
