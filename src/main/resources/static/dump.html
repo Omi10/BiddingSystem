@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html >
+<head>
+<title>Bootstrap Example</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<link rel="stylesheet" href="css/bootstrap.min.css" media="screen" />
+<link rel="stylesheet" href="css/common.css" media="screen" />
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/itemsearch.js"></script>
+<script type="text/javascript" src="js/bootbox.min.js"></script>
+
+</head>
+<body>
+
+<!-- 	<div class="jumbotron">
+		<div class="container text-center">
+			<h1>Online Store</h1>
+			<p>Mission, Vission ,Values</p>
+		</div>
+	</div> -->
+
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target="#myNavbar">
+					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href=""></a>
+			</div>
+			<div class="collapse navbar-collapse" id="myNavbar">
+				<ul class="nav navbar-nav">
+			       <!--  <li class="active"><a href="home.html">Home</a></li> -->
+			        <li><a href="itemsearch.html">Item Search</a></li>
+			        <li><a href="itemupload.html">Item Upload</a></li>
+			        <li><a href="bids.html">My Bids</a></li>
+                    <li><a href="uploadeditems.html">Uploaded Items</a></li>
+			      <!--   <li><a href="about.html">About</a></li> -->
+		        </ul>				
+		      <ul class="nav navbar-nav navbar-right">
+				    <li><a href="/logout"><span class="glyphicon glyphicon glyphicon-log-out">
+				    </span> Log-out </a>
+				    </li>
+			  </ul>
+			</div>
+		</div>
+	</nav>
+
+	<!-- <div>
+		<button id="serachButton">Search Items</button>
+	</div> -->
+	
+<div class="form-inline">
+  <div class="col-md-2">
+  <select class="selectpicker" data-live-search="true" id ="addressSelector">
+    <option>All</option>
+    <option>Electronics</option>
+    <option>Vechicles</option>
+  </select>
+  </div>
+  
+<!--   <div class="col-md-4">
+  <select class="selectpicker" data-live-search="true" id ="categorySelector">
+        <option>All</option>
+        <option>Mobiles</option>
+        <option>Cars</option>
+  </select>
+  </div> -->
+  
+  <div class="col-md-2">
+ <button type="submit" class="btn btn-primary" id = "searchButton"> Search </button>
+ </div>
+</div>
+
+
+<!-- Trigger the modal with a button -->
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        <p>Some text in the modal.</p>
+        <label class="control-label col-xs-3" for="firstName">Bid Amount</label>
+         <input type="text" class="form-control" id="firstName" placeholder="Item">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" value=" Send" class="btn btn-success" onclick="postTeam()">
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+	<div class="container">
+		<h2>Search Results</h2>
+		<div class="table-responsive">
+			<table class="table" id="itemsTable">
+				<thead>
+					<tr>
+						<th>S.No.</th>
+						<th>Name</th>
+						<!-- <th>Category</th> -->
+						<th>Description</th>
+						<th>Intial Bid Amount</th>
+						<th>Bid End Time</th>
+						<th>My Bid</th>
+					</tr>
+				</thead>
+			</table>
+		</div>
+		<br> <br>
+    </div>
+		<footer class="container-fluid text-center">
+			<p>Copyright</p>
+		</footer>
+</body>
+</html>
+
+
+

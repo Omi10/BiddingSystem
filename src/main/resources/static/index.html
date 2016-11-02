@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html >
 <head>
   <title>Life Line</title>
   <meta charset="utf-8">
@@ -8,11 +8,13 @@
     <meta name="google-signin-client_id" content="944192702529-jn082qg79lj4k1tiatbed6tr152e0luo.apps.googleusercontent.com">
     <script src="https://apis.google.com/js/client:platform.js?onload=renderButton" async defer></script>
   <!-- for google log in end-->
+  
+  
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <style>
   
+  <style>
   .jumbotron {
       background-color: #808080;
       color: #fff;
@@ -29,8 +31,8 @@
 <!-- for google log in start-->
 <script>
 
-$.get( "/home" ,function(data){
-  window.location.replace("/itemsearch.html");
+$.get( "home" ,function(data){
+  window.location.replace("itemsearch.html");
 });
 
 </script>
@@ -44,7 +46,7 @@ $.get( "/home" ,function(data){
 
 <div class="container text-center">
       <a class="btn btn-large btn-info loginBtn loginBtn--google"
-        href="/login">Login with Google</a>
+        href="login">Login with Google</a>
     </div>
 
 </body>

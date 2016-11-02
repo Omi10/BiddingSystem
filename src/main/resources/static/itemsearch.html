@@ -1,92 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html >
 <head>
 <title>Bootstrap Example</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<style>
-/* Remove the navbar's default rounded borders and increase the bottom margin */
-.navbar {
-	margin-bottom: 50px;
-	border-radius: 0;
-}
-
-/* Remove the jumbotron's default bottom margin */
-.jumbotron {
-	margin-bottom: 0;
-}
-
-/* Add a gray background color and some padding to the footer */
-footer {
-	background-color: #f2f2f2;
-	padding: 25px;
-}
-</style>
-
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script>
-$(document).ready(function() {
-     $.get("/items", function(data, status) 
-     {
-		$.each(data, function(i, item)
-		{					
-			tr = $('<tr/>');
-			tr.append("<td>" + (i + 1) + "</td>");
-			tr.append("<td>" + data[i].name + "</td>");
-			//tr.append("<td>" + data[i].category + "</td>");
-			tr.append("<td>" + data[i].description + "</td>");
-			tr.append("<td>" + data[i].startBidAmount + "</td>");
-			tr.append("<td>" + data[i].bidEndTime + "</td>");
-	        tr.append("<td> <input id="+"bidValueTextBox"+data[i].itemId+ " type=\"text\"> </td>");																
-			tr.append($('<button/>', 
-			{
-				text: 'Send My Bid', 
-	            id: "bidButton"+data[i].itemId,
-	            val: data[i].itemId ,
-			    click: function() 
-			    {   
-			    	console.log($("#bidValueTextBox"+$(this).val()).val());
-				    $.ajax(
-				    {
-				    	   url : '/items/'+data[i].itemId+'/bids',
-					       type : 'POST',
-					       contentType : 'application/json',
-					       data : JSON.stringify
-					       ({
-						       "bidderId": 1,
-						       "bidValue": $("#bidValueTextBox"+$(this).val()).val()  
-					       }),
-					dataType : 'json'
-		            });
-				    //$("#bidValueTextBox"+$(this).val()).prop("disabled", true);
-				    $("#bidValueTextBox"+$(this).val()).val('');
-	                //$(this).prop("disabled", true);
-					                 
-			    }
-			}));             
-			$('#itemsTable').append(tr);
-	    });      
-	});
-});			  
 
 
-</script>
+<link rel="stylesheet" href="css/bootstrap.min.css" media="screen" />
+<link rel="stylesheet" href="css/common.css" media="screen" />
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/itemsearch.js"></script>
+<script type="text/javascript" src="js/bootbox.min.js"></script>
+<script type="text/javascript" src="js/jqBootstrapValidation.js"></script>
+
 </head>
 <body>
 
-	<div class="jumbotron">
+	<!-- <div class="jumbotron">
 		<div class="container text-center">
 			<h1>Online Store</h1>
-			<p>Mission, Vission & Values</p>
+			<p>Mission, Vission ,Values</p>
 		</div>
-	</div>
+	</div> -->
 
 	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
@@ -105,10 +43,10 @@ $(document).ready(function() {
 			        <li><a href="itemupload.html">Item Upload</a></li>
 			        <li><a href="bids.html">My Bids</a></li>
                     <li><a href="uploadeditems.html">Uploaded Items</a></li>
-			      <!--   <li><a href="about.html">About</a></li> -->
+			        <li><a href="results.html">Results</a></li>
 		        </ul>				
 		      <ul class="nav navbar-nav navbar-right">
-				    <li><a href="/logout"><span class="glyphicon glyphicon glyphicon-log-out">
+				    <li><a href="logout"><span class="glyphicon glyphicon glyphicon-log-out">
 				    </span> Log-out </a>
 				    </li>
 			  </ul>
@@ -119,11 +57,64 @@ $(document).ready(function() {
 	<!-- <div>
 		<button id="serachButton">Search Items</button>
 	</div> -->
+	
+<!-- <div class="form-inline">
+  <div class="col-md-2">
+  <select class="selectpicker" data-live-search="true" id ="categorySelector">
+  
+  </select>
+  </div>
+    
+  <div class="col-md-2">
+ <button type="submit" class="btn btn-primary" id = "searchButton"> Search </button>
+ </div>
+</div> -->
+
+
+<!-- Trigger the modal with a button -->
+
+<!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+
+
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    Modal content
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        <p>Some text in the modal.</p>
+        <label class="control-label col-xs-3" for="firstName">Bid Amount</label>
+         <input type="text" class="form-control" id="firstName" placeholder="Item">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" value=" Send" id="SendBidButton">Submit Bid</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+ -->
 
 	<div class="container">
-		<h2>Search Results</h2>
+	    
+	    <div class="form-inline" >
+            <div class="form-group">
+               <label>Serach Criteria</label>
+               <select class="selectpicker" data-live-search="true" id ="categorySelector">
+               </select>
+            </div>
+               <button type="submit" class="btn btn-primary" id = "searchButton"> Search </button>
+        </div>
+	
+	
+		<h3>Search Results</h3>
 		<div class="table-responsive">
-			<table class="table" id="itemsTable">
+			<table class="table" id="itemsTable" border="1">
 				<thead>
 					<tr>
 						<th>S.No.</th>
@@ -133,15 +124,16 @@ $(document).ready(function() {
 						<th>Intial Bid Amount</th>
 						<th>Bid End Time</th>
 						<th>My Bid</th>
+						<th>Bid Button</th>
 					</tr>
 				</thead>
 			</table>
 		</div>
 		<br> <br>
     </div>
-		<footer class="container-fluid text-center">
+<!-- 		<footer class="container-fluid text-center">
 			<p>Copyright</p>
-		</footer>
+		</footer> -->
 </body>
 </html>
 

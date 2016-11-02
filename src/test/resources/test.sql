@@ -1,32 +1,30 @@
 
-
-
-INSERT INTO `user` (`id`, `name`, `email`, `contact_no`)
-VALUES
-	(1,'om','nirankariom@gmail.com','9826471322'),
-	(2,'rahul','rahulpat@gmail.com','9826473281'),
-	(3,'prerna','prerna@gmail.com','9875647210'),
-	(4,'ritesh','rit@gmail.com','9875647211');
+INSERT INTO user (id, name, email, contact_no) VALUES (1,'om','nirankariom@gmail.com','9826471322');
+INSERT INTO user (id, name, email, contact_no) VALUES (2,'rahul','rahulpat@gmail.com','9826473281');
+INSERT INTO user (id, name, email, contact_no) VALUES (3,'prerna','prerna@gmail.com','9875647210');
+INSERT INTO user (id, name, email, contact_no) VALUES (4,'ritesh','rit@gmail.com','9875647211');
+INSERT INTO user (id, name, email, contact_no) VALUES (5,'Om Prakash Nirankari','omprakash@practo.com','9826471322');
+INSERT INTO user (id, name, email, contact_no) VALUES (6,'Anoop Singh Rawat','anoop.singh@practo.com',NULL);
 	
-INSERT INTO `category` (`id`, `category`)
-VALUES
-	(1,'Electronics'),
-	(2,'Vechiles'),
-	(3,'Furniture');
+INSERT INTO category (id, category) VALUES (1,'Electronics');
+INSERT INTO category (id, category) VALUES	(2,'Vechiles');
+INSERT INTO category (id, category) VALUES	(3,'Home Appliances');
+INSERT INTO category (id, category) VALUES	(4,'Others');
 
-INSERT INTO `item` (`id`, `item`, `description`, `image_url`, `initial_price`, `start_time`, `end_time`, `category_id`, `owner_id`, `bid_type`, `min_balance`)
-VALUES
-	(1,'Samsung J5 Mobile','2014 purchased',NULL,3000,NULL,'2016-10-25 18:37:43',1,1,0,NULL),
-	(2,'Car','2015 purchased',NULL,500000,NULL,'2015-05-12 19:20:50',1,1,0,213),
-	(3,'Camera','Nikon',NULL,4509,NULL,'2016-10-03 00:32:00',1,1,0,234),
-	(4,'Bike','2014 purchased',NULL,40000,NULL,'2016-10-01 10:30:20',2,3,0,NULL),
-	(5,'Fridge','2013 purchased',NULL,6000,NULL,'2016-10-01 14:30:20',1,1,1,500),
-	(6,'Bike','2009 purchased',NULL,6888,NULL,'2016-10-01 14:30:20',2,1,0,7000);
+INSERT INTO item (id, item, description, image_url, initial_price, start_time, end_time, category_id,owner_id, bid_type, min_balance) VALUES (1,'Samsung J5 Mobile','2015 purchased',NULL,5000,NULL,'2016-11-25 18:37:00',1,1,NULL,NULL);
+INSERT INTO item (id, item, description, image_url, initial_price, start_time, end_time, category_id,owner_id, bid_type, min_balance) VALUES (4,'Splender Bike','2014 purchased',NULL,40000,NULL,'2016-11-03 13:00:00',2,5,NULL,NULL);
+INSERT INTO item (id, item, description, image_url, initial_price, start_time, end_time, category_id,owner_id, bid_type, min_balance) VALUES (5,'Fridge','2013 purchased',NULL,6000,NULL,'2016-11-04 14:30:00',1,2,NULL,NULL);
+INSERT INTO item (id, item, description, image_url, initial_price, start_time, end_time, category_id,owner_id, bid_type, min_balance) VALUES (6,'Pulsar 150 cc','2009 purchased',NULL,20000,NULL,'2016-11-01 14:30:00',2,5,NULL,NULL);
+INSERT INTO item (id, item, description, image_url, initial_price, start_time, end_time, category_id,owner_id, bid_type, min_balance) VALUES (31,'Laptop','Dell Inspiron',NULL,14500,NULL,'2016-11-27 03:03:00',1,2,NULL,NULL);
+INSERT INTO item (id, item, description, image_url, initial_price, start_time, end_time, category_id,owner_id, bid_type, min_balance) VALUES	(36,'Voltas AC','2 years old',NULL,7000,NULL,'2016-11-27 13:00:00',1,2,NULL,NULL);
+INSERT INTO item (id, item, description, image_url, initial_price, start_time, end_time, category_id,owner_id, bid_type, min_balance) VALUES	(64,'Maruti Swift','2014 model',NULL,400000,NULL,'2016-11-26 17:39:00',2,5,NULL,NULL);
+INSERT INTO item (id, item, description, image_url, initial_price, start_time, end_time, category_id,owner_id, bid_type, min_balance) VALUES	(70,'Sofa','3+2 Seater',NULL,6000,NULL,'2016-11-01 17:39:00',3,3,NULL,NULL);
+INSERT INTO item (id, item, description, image_url, initial_price, start_time, end_time, category_id,owner_id, bid_type, min_balance) VALUES	(84,'Chair','Wooden material',NULL,350,NULL,'2016-11-02 23:59:00',3,1,NULL,NULL);
 	
-INSERT INTO `bid` (`id`, `user_id`, `item_id`, `is_recent`, `bid_amount`, `bid_won`, `bid_time`)
-VALUES
-	(6,1,4,0,23456,0,'2016-10-24 15:56:19'),
-	(20,2,1,0,7895,0,'2016-10-23 16:41:34'),
-	(27,1,1,0,3456,0,'2016-10-23 18:51:56'),
-	(29,1,2,0,3425,0,'2016-10-23 19:01:24'),
-	(30,1,2,0,7685,0,'2016-10-23 19:02:07'),
+INSERT INTO bid (id, user_id, item_id, is_recent, bid_amount, bid_won, bid_time) VALUES (84,1,70,0,6700,0,'2016-11-01 16:07:47');
+INSERT INTO bid (id, user_id, item_id, is_recent, bid_amount, bid_won, bid_time) VALUES (85,5,70,0,6900,0,'2016-11-01 16:09:31');
+INSERT INTO bid (id, user_id, item_id, is_recent, bid_amount, bid_won, bid_time) VALUES	(86,1,4,0,45000,0,'2016-11-01 19:18:31');
+INSERT INTO bid (id, user_id, item_id, is_recent, bid_amount, bid_won, bid_time) VALUES	(87,5,1,0,5100,0,'2016-11-01 19:23:15');
+INSERT INTO bid (id, user_id, item_id, is_recent, bid_amount, bid_won, bid_time) VALUES	(88,6,4,0,48000,0,'2016-11-01 19:35:36');
+INSERT INTO bid (id, user_id, item_id, is_recent, bid_amount, bid_won, bid_time) VALUES	(89,6,5,0,6500,0,'2016-11-01 19:36:09');
+INSERT INTO bid (id, user_id, item_id, is_recent, bid_amount, bid_won, bid_time) VALUES	(90,6,64,0,410000,0,'2016-11-01 19:37:33');

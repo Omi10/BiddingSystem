@@ -1,90 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html >
 <head>
 <title>Bootstrap Example</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<style>
-/* Remove the navbar's default rounded borders and increase the bottom margin */
-.navbar {
-	margin-bottom: 50px;
-	border-radius: 0;
-}
 
-/* Remove the jumbotron's default bottom margin */
-.jumbotron {
-	margin-bottom: 0;
-}
+<link rel="stylesheet" href="css/bootstrap.min.css" media="screen" />
+<link rel="stylesheet" href="css/common.css" media="screen" />
 
-/* Add a gray background color and some padding to the footer */
-footer {
-	background-color: #f2f2f2;
-	padding: 25px;
-}
-</style>
-
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script>
-$(document).ready(function() {
-     $.get("/user/1/bids", function(data, status) 
-     {
-		$.each(data, function(i, item)
-		{					
-			tr = $('<tr/>');
-			tr.append("<td>" + (i + 1) + "</td>");
-			tr.append("<td>" + data[i].item + "</td>");
-			tr.append("<td>" + data[i].description + "</td>");
-			tr.append("<td>" + data[i].startBidValue + "</td>");
-			tr.append("<td>" + data[i].bidEndTime + "</td>"); 
-			console.log(data[i].bidEndTime);
-			tr.append("<td>" + data[i].bidValue + "</td>");
-			 tr.append("<td> <input id="+ "newBid_"+data[i].bidId+ " type=\"text\"> </td>");																
-			tr.append($('<button/>', 
-			{
-				text: 'Update Bid', 
-			    id: "updateBid_"+ data[i].bidId,
-			    val : data[i].bidId,
-			    click: function() 
-			    {   
-				    $.ajax(
-				    {
-						url : '/bids/'+data[i].bidId,
-						type : 'PATCH',
-						contentType : 'application/json',
-						data : JSON.stringify({
-						"bidId": data[i].bidId,
-						"bidValue": $("#newBid_"+$(this).val()).val()  //this denotes current buttonand taking its default value
-						 }),
-						 dataType : 'json'
-		            });
-					$("#newBid_"+$(this).val()).prop("disabled", true);
-					$(this).prop("disabled", true);
-					                 
-			    }
-			}));             
-			$('#itemsTable').append(tr);
-	    });      
-	});
-});			             
-</script>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/bids.js"></script>
+<script type="text/javascript" src="js/bootbox.min.js"></script>
 
 </head>
 <body>
 
-	<div class="jumbotron">
+<!-- 	<div class="jumbotron">
 		<div class="container text-center">
 			<h1>Online Store</h1>
-			<p>Mission, Vission & Values</p>
+			<p>Mission, Vission Values</p>
 		</div>
-	</div>
+	</div> -->
 
 	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
@@ -103,11 +40,11 @@ $(document).ready(function() {
 					<li><a href="itemupload.html">Item Upload</a></li>
 					<li><a href="bids.html">My Bids</a></li>
 					<li><a href="uploadeditems.html">Uploaded Items</a></li>
-					<!-- <li><a href="about.html">About</a></li> -->
+					<li><a href="results.html">Results</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="/logout"><span class="glyphicon glyphicon glyphicon-log-out">
-				      </span> Log-out </a>
+					<li><a href="logout"> <!-- <span class="glyphicon glyphicon glyphicon-log-out"> </span>-->
+				       Log-out </a>
 				    </li>
 				</ul>
 			</div>
@@ -115,9 +52,9 @@ $(document).ready(function() {
 	</nav>
 
 	<div class="container">
-		<h2>Search Results</h2>
+		<h2>My Bids</h2>
 		<div class="table-responsive">
-			<table class="table" id="itemsTable">
+			<table class="table" id="itemsTable" border="1">
 				<thead>
 					<tr>
 						<th>S.No.</th>
@@ -125,17 +62,19 @@ $(document).ready(function() {
 						<th>Descripton</th>
 						<th>Intial Bid Amount</th>
 						<th>Bid End Time</th>
+						<th>My Bid Time</th>
 						<th>My Old Bid</th>
 						<th>My New Bid</th>
+						<th>Update/Delete Button</th>
 					</tr>
 				</thead>
 			</table>
 		</div>
 		<br> <br>
 	</div>
-	<footer class="container-fluid text-center">
+	<!-- <footer class="container-fluid text-center">
 		<p>Copyright</p>
-	</footer>
+	</footer> -->
 </body>
 </html>
 
