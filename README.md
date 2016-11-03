@@ -27,6 +27,8 @@ This project for Online Bidding System where users can upload their items for bi
 
 [Newrelic](https://rpm.newrelic.com/accounts/1466356/applications/29831499)
 
+[Page Speed](https://developers.google.com/speed/pagespeed/insights/?url=http%3A%2F%2Fec2-54-245-35-16.us-west-2.compute.amazonaws.com%3A8080%2Fbidsystem&tab=desktop)
+
 
 
 
