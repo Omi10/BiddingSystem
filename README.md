@@ -29,6 +29,10 @@ This project for Online Bidding System where users can upload their items for bi
 
 [Page Speed](https://developers.google.com/speed/pagespeed/insights/?url=http%3A%2F%2Fec2-54-245-35-16.us-west-2.compute.amazonaws.com%3A8080%2Fbidsystem&tab=desktop)
 
+[Apiary](http://docs.biddingsystemapi.apiary.io/#reference/0/upload-an-item/deleting-item)
+
+
+
 
 
 
