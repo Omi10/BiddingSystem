@@ -1,11 +1,8 @@
 # Bidding-System
 
-<<<<<<< HEAD
 ![Travis](https://travis-ci.org/Omi10/Online-Bidding-system.svg?branch=master)
 
 This project for Online Bidding System where users can upload their items for biddincu
-=======
->>>>>>> d1c8633ee3be548b63808fc0e6966dc001264611
 
 [![Travis](https://travis-ci.org/Omi10/BiddingSystem.svg?branch=master)](https://github.com/Omi10/BiddingSystem)
 
