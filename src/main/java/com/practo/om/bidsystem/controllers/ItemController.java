@@ -58,13 +58,7 @@ public class ItemController {
 		return itemService.addItem(itemModel, userId);
 	}
 
-	@RequestMapping(value = "/item/{itemId}", method = RequestMethod.PATCH)
-	@ResponseBody
-	@ResponseStatus(HttpStatus.OK)
-	public ItemModel updateItem(@PathVariable int itemId, @RequestBody ItemModel itemModel) {
-		return itemService.updateItem(itemId, itemModel);
-	}
-
+	
 	@RequestMapping(value = "/item/{itemId}", method = RequestMethod.GET)
 	@ResponseBody
 	@ResponseStatus(HttpStatus.OK)

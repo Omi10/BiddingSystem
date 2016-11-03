@@ -37,21 +37,7 @@ public class ItemServiceImp implements ItemService {
 
 	private static final Logger LOG = Logger.getInstance(ItemServiceImp.class);
 
-	@Override
-	public List<ItemModel> getItemsByCategory(Map<String, String[]> parameters) {
-		List<Item> items = null;
-		if (parameters.size() == 0) {
-			items = (List<Item>) itemDao.getItems();
-		} else {
-			int idValue = new Integer(parameters.get("categoryId")[0]);
-			System.out.println("Idvalue ==" + idValue);
-			items = (List<Item>) itemDao.getItemsByCategory(idValue);
-		}
-		LOG.info("Requested all items");
-		List<ItemModel> itemModels = mUtility.itemsToItemModels(items);
-		return itemModels;
-	}
-
+	
 	@Override
 	public List<ItemModel> getAllItems() {
 		List<Item> items = itemDao.getItems();
@@ -131,15 +117,6 @@ public class ItemServiceImp implements ItemService {
 		Category category=categoryDao.getCategory(itemModel.getCategoryId());
 		item.setCategory(category);
 		itemDao.save(item);
-		return itemModel;
-	}
-
-	@Override
-	public ItemModel updateItem(int itemId, ItemModel itemModel) {
-		Item item = itemDao.getItem(itemId);
-		mUtility.updateItem(item, itemModel);
-		itemDao.update(item);
-		LOG.info("Updated the Item with Id=" + itemId);
 		return itemModel;
 	}
 

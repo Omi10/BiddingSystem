@@ -8,28 +8,29 @@
 <link rel="stylesheet" href="css/bootstrap.min.css" media="screen" />
 <link rel="stylesheet" href="css/common.css" media="screen" />
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/itemupload.js"></script>
 <script type="text/javascript" src="js/bootbox.min.js"></script>
 <script type="text/javascript" src="js/jqBootstrapValidation.js"></script>
 
 <style type="text/css">
-    h1{
-        margin: 30px 0;  
-        padding: 0 200px 15px 0;
-        border-bottom: 1px solid #E5E5E5;
-    }
-    
-	.bs-example{
+h1 {
+	margin: 30px 0;
+	padding: 0 200px 15px 0;
+	border-bottom: 1px solid #E5E5E5;
+}
+
+.bs-example {
 	max-width: 50%;
 	margin: 20px;
-    }
+}
 </style>
 
 </head>
 
- 
+
 <body>
 
 	<!--  <div class="jumbotron">
@@ -49,7 +50,7 @@
 				</button>
 				<a class="navbar-brand" href=""></a>
 			</div>
-			
+
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav">
 					<!--  <li class="active"><a href="home.html">Home</a></li> -->
@@ -60,72 +61,81 @@
 					<li><a href="results.html">Results</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="logout"><!-- <span
-							class="glyphicon glyphicon glyphicon-log-out"> </span> --> Log-out </a></li>
+					<li><a href="logout">
+							<!-- <span
+							class="glyphicon glyphicon glyphicon-log-out"> </span> -->
+							Log-out
+					</a></li>
 				</ul>
 			</div>
 		</div>
 	</nav>
 
 
-<div class="bs-example"> 
-    <h1>Item Details</h1>
-    <form class="form-horizontal" id="uploadForm" name="uploadForm" data-toggle="validator">
-        <div class="form-group">
-            <label class="control-label col-xs-3">Item : *</label>
-            <div class="col-xs-9">
-                <input type="text" class="form-control" id="itemName"  name="itemName" placeholder="Item" required>
-            </div>
-        </div>
+	<div class="bs-example">
+		<h1>Item Details</h1>
+		<form class="form-horizontal" id="uploadForm" name="uploadForm"
+			data-toggle="validator">
+			<div class="form-group">
+				<label class="control-label col-xs-3">Item : *</label>
+				<div class="col-xs-9">
+					<input type="text" class="form-control" id="itemName"
+						name="itemName" placeholder="Item" required>
+				</div>
+			</div>
 
 			<div class="form-group">
 				<label class="control-label col-xs-3">Description : *</label>
 				<div class="col-xs-9">
-					<textarea rows="3" class="form-control" id="Description" name="description" 
-						placeholder="Brief Description" required></textarea>
+					<textarea rows="3" class="form-control" id="Description"
+						name="description" placeholder="Brief Description" required></textarea>
 				</div>
 			</div>
-		
-		<div class="form-group">
-            <label class="control-label col-xs-3">Category :</label>
-            <div class="col-xs-9">
-                <select class="form-control" id ="categorySelector" name ="categorySelector">
-                </select>
-            </div>
-         </div>	
-          
-		<div class="form-group">
-            <label class="control-label col-xs-3" >Bid End Time :</label>
-            <div class="col-xs-9">
-                <input class="form-control" type="datetime-local" value="2016-11-03T23:59:59"  id="bidEndTime" 
-                name="bidEndTime">
-            </div>
-        </div>
-        
-         <div class="form-group">
-            <label class="control-label col-xs-3" >Bid Start Amount : *</label>
-            <div class="col-xs-9">
-                <input type="number" step="1" pattern="[0-9]" min="0" class="form-control" id="startBidAmount"  name="startBidAmount" placeholder="In Rupees" required>
-            </div>
-        </div>
-        
-       <!--  <div class="form-group">
+
+			<div class="form-group">
+				<label class="control-label col-xs-3">Category :</label>
+				<div class="col-xs-9">
+					<select class="form-control" id="categorySelector"
+						name="categorySelector">
+					</select>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-xs-3">Bid End Time :</label>
+				<div class="col-xs-9">
+					<input class="form-control" type="datetime-local"
+						value="2016-11-03T23:59:59" id="bidEndTime" name="bidEndTime">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-xs-3">Bid Start Amount : *</label>
+				<div class="col-xs-9">
+					<input type="number" step="1" pattern="[0-9]" min="0"
+						class="form-control" id="startBidAmount" name="startBidAmount"
+						placeholder="In Rupees" required>
+				</div>
+			</div>
+
+			<!--  <div class="form-group">
             <div class="col-xs-offset-3 col-xs-9">
                 <label class="checkbox-inline">
                     <input type="checkbox" value="agree">  I agree to the <a href="#">Terms and Conditions</a>.
                 </label>
             </div>
         </div> -->
-        <br>
-        
-        <div class="form-group">
-            <div class="col-xs-offset-3 col-xs-9">
-                <input type="submit" class="btn btn-primary" value="Submit" id="uploadButton">
-                <input type="reset" class="btn btn-default" value="Reset">
-            </div>
-        </div>
-    </form>
- </div> 
+			<br>
+
+			<div class="form-group">
+				<div class="col-xs-offset-3 col-xs-9">
+					<input type="submit" class="btn btn-primary" value="Submit"
+						id="uploadButton"> <input type="reset"
+						class="btn btn-default" value="Reset">
+				</div>
+			</div>
+		</form>
+	</div>
 
 
 	<!-- <footer class="container-fluid text-center">

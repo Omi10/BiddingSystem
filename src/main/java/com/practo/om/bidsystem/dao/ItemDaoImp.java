@@ -96,10 +96,5 @@ public class ItemDaoImp implements ItemDao {
 		return executableCriteria.list();
 	}
 
-	@Override
-	public void update(Item Item) {
-		getSession().update(Item);
-	}
-
 
 }

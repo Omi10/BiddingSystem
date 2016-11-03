@@ -15,9 +15,6 @@ public interface ItemDao {
 
 	public Item getItem(int ItemId);
 
-	public void update(Item Item);
-
-
 	public List<Item> getItemsByCategory(int categoryId);
 
 	public List<Item> getUserItems(int userId) throws JDBCConnectionException;

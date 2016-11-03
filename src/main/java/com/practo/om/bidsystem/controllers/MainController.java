@@ -28,15 +28,6 @@ public class MainController extends WebSecurityConfigurerAdapter {
 	@Autowired
 	UserServiceImp userService;
 	
-	/**
-	 * 
-	 * @param session
-	 * @param principal
-	 * @return
-	 * @throws ForbiddenException
-	 * @throws UnauthorizedException
-	 */
-
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	@ResponseBody
 	public String login(HttpSession session, Principal principal) throws ForbiddenException, UnauthorizedException {

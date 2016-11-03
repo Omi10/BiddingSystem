@@ -12,7 +12,6 @@ public interface UserService {
 
 	public User addUser(String name, String email);
 
-
 	public User getUserById(int userId) throws BadRequestException;
 
 	public User getUserByEmail(String email);

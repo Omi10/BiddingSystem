@@ -85,11 +85,6 @@ public class BidServiceImp implements BidService {
 			throw new BadRequestException("Invalid  bid amount");
 		}
 
-//		if (makeBidModel.getBidderId() == item.getUser().getId()) {
-//			LOG.error("Owner cannot bid for his item ", new BadRequestException());
-//			throw new BadRequestException("Invalid Bid");
-//		}
-
 		Bid bid = mUtility.makeBidModelToBid(itemId, makeBidModel);
 		bidDao.save(bid);
 		return makeBidModel;
@@ -119,12 +114,6 @@ public class BidServiceImp implements BidService {
 
 	@Override
 	public ResultModel getBidResult(int itemId) throws BadRequestException {
-		Item item = itemDao.getItem(itemId);
-		Date now = new Date();
-		/*if (item.getEndTime().after(now)) {
-			LOG.error("Results are not out yet ", new BadRequestException());
-			throw new BadRequestException("Results are not out yet");
-		}*/
 		ResultModel resultModel = bidDao.getBidResult(itemId);
 		return resultModel;
 	}
@@ -138,8 +127,6 @@ public class BidServiceImp implements BidService {
 			LOG.error("Bid Results are out cannot delete the bid now", new BadRequestException());
 			throw new BadRequestException("Bid Results are out cannot delete the bid now");
 	    }
-		//Bid bid = new Bid();
-		//bid.setId(bidId);
 		bidDao.delete(bid);
 		LOG.info("Deleted the Bid with Id=" + bidId);
 	}

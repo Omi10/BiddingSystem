@@ -123,6 +123,30 @@ public class ItemTest {
 		Assert.assertEquals(newSize, oldSize + 1);
 	}
 	
+	@Test
+	public void getItemsForUserTest() throws BadRequestException {
+		int userId=1;
+		List<ItemModel> itemModels = itemService.getItemsForUser(userId);
+		User user=userService.getUserById(userId);
+		for(ItemModel itemModel: itemModels)
+		{
+			Assert.assertNotEquals(itemModel.getOwner(),user.getName());
+		}	
+	}
+	
+	
+	@Test
+	public void getItemsgetItemsByFilterTest() throws BadRequestException {
+		int userId=1;
+		int categoryId=1;
+		List<ItemModel> itemModels = itemService.getItemsByFilter(userId,categoryId);
+		User user=userService.getUserById(userId);
+		for(ItemModel itemModel: itemModels)
+		{
+			Assert.assertNotEquals(itemModel.getOwner(),user.getName());
+			Assert.assertNotEquals(itemModel.getCategoryId(),categoryId);
+		}	
+	}
 	
 
 }
