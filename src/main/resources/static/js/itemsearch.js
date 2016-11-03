@@ -24,7 +24,7 @@ $(document).ready(function() {
 			tr.append("<td>" + data[i].startBidAmount + "</td>");
 			tr.append("<td>" + data[i].bidEndTime + "</td>");
 	        tr.append("<td> <input id="+"bidValueTextBox"+data[i].itemId+ " type='number' step='1' pattern='[0-9]' min='0'> </td>");	
-	        //tr.append("<button type='button' class='btn btn-info btn-sm' data-toggle='modal' data-target='#myModal' id="+data[i].itemId+">"+"Open Modal"+"</button>");
+	       
 			   
 	        tr.append($('<button/>', 
 			{
